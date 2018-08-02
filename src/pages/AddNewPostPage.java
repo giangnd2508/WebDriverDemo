@@ -36,6 +36,9 @@ public class AddNewPostPage extends BasePage {
 
 	@FindBy(id = "newcategory")
 	WebElement newCatInput;
+	
+	@FindBy(id = "category-add-submit")
+	WebElement newCatBtn;
 
 	WebDriver driver;
 	WebDriverWait wait;
@@ -61,9 +64,11 @@ public class AddNewPostPage extends BasePage {
 		return new PostDetailPage(driver);
 	}
 
-	public void addNewCat() {
+	public void addNewCat(String cat) {
 		addNewCatLink.click();
 		wait.until(ExpectedConditions.elementToBeClickable(newCatInput));
+		newCatInput.sendKeys(cat);
+		newCatBtn.click();
 	}
 
 	public void selectCat(String cat) {
