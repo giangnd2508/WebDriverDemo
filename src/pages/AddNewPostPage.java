@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AddNewPostPage extends BasePage{
+public class AddNewPostPage extends BasePage {
 
 	@FindBy(id = "content_ifr")
 	WebElement iframe;
@@ -29,6 +30,12 @@ public class AddNewPostPage extends BasePage{
 
 	@FindBy(id = "sample-permalink")
 	WebElement linkPost;
+
+	@FindBy(id = "category-add-toggle")
+	WebElement addNewCatLink;
+
+	@FindBy(id = "newcategory")
+	WebElement newCatInput;
 
 	WebDriver driver;
 	WebDriverWait wait;
@@ -52,6 +59,26 @@ public class AddNewPostPage extends BasePage{
 	public PostDetailPage goToDetailPage() {
 		linkNewPost.click();
 		return new PostDetailPage(driver);
+	}
+
+	public void addNewCat() {
+		addNewCatLink.click();
+		wait.until(ExpectedConditions.elementToBeClickable(newCatInput));
+	}
+
+	public void selectCat(String cat) {
+		String xpath = "//*[@id='categorychecklist']//label[contains(text(), '" + cat + "')]";
+		driver.findElement(By.xpath(xpath)).click();
+	}
+
+	public void addANewPostWithCategory(String title, String body, String cat) {
+		titleID.sendKeys(title);
+		driver.switchTo().frame(iframe);
+		bodyID.sendKeys(body);
+		driver.switchTo().defaultContent();
+		wait.until(ExpectedConditions.visibilityOf(permalink));
+		selectCat(cat);
+		publishBtn.click();
 	}
 
 }

@@ -14,7 +14,7 @@ public class AllPostsTest extends BaseTest {
 	AddNewPostPage addNewPg;
 	AllPostsPage allPostsPg;
 
-	@Test
+	@Test(enabled=false)
 	public void deleteFirstPost() {
 		loginPg = new LoginPage(driver);
 
@@ -24,6 +24,20 @@ public class AllPostsTest extends BaseTest {
 
 		allPostsPg = addNewPg.moveToAllPostsPage();
 		allPostsPg.deleteFirstRowPost();
+		Assert.assertNotEquals(allPostsPg.getTitleFirstPost(), title);
+	}
+	
+	@Test
+	public void filterByCategory() {
+		loginPg = new LoginPage(driver);
+		dashBoardPg = loginPg.loginSuccess();
+		addNewPg = dashBoardPg.moveToAddNewPostPage();
+		addNewPg.addANewPostWithCategory(title, body, "auto");
+		allPostsPg = addNewPg.moveToAllPostsPage();
+		allPostsPg.filterByCategory("auto");
+		allPostsPg.deleteFirstRowPost();
+		allPostsPg = allPostsPg.moveToAllPostsPage();
+		
 		Assert.assertNotEquals(allPostsPg.getTitleFirstPost(), title);
 	}
 }

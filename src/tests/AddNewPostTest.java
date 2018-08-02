@@ -15,14 +15,15 @@ public class AddNewPostTest extends BaseTest {
 	PostDetailPage postDetailPg;
 
 	@Test
-	public void addNewPost(){
+	public void addNewPost() {
 		loginPg = new LoginPage(driver);
 
 		dashboardPg = loginPg.loginSuccess();
 		addNewPg = dashboardPg.moveToAddNewPostPage();
 		addNewPg.addANewPost(title, body);
 		postDetailPg = addNewPg.goToDetailPage();
-		
+
 		Assert.assertEquals(postDetailPg.getPostTitle(), title);
 	}
+
 }
