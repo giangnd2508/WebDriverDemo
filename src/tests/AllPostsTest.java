@@ -17,11 +17,9 @@ public class AllPostsTest extends BaseTest {
 	@Test(enabled = false)
 	public void deleteFirstPost() {
 		loginPg = new LoginPage(driver);
-
 		dashBoardPg = loginPg.loginSuccess();
 		addNewPg = dashBoardPg.moveToAddNewPostPage();
 		addNewPg.addANewPost(title, body);
-
 		allPostsPg = addNewPg.moveToAllPostsPage();
 		allPostsPg.deleteFirstRowPost();
 		Assert.assertNotEquals(allPostsPg.getTitleFirstPost(), title);
@@ -37,7 +35,6 @@ public class AllPostsTest extends BaseTest {
 		allPostsPg.filterByCategory("auto");
 		allPostsPg.deleteFirstRowPost();
 		allPostsPg = allPostsPg.moveToAllPostsPage();
-
 		Assert.assertNotEquals(allPostsPg.getTitleFirstPost(), title);
 	}
 
