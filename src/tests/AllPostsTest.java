@@ -44,6 +44,6 @@ public class AllPostsTest extends BaseTest {
 		dashBoardPg = loginPg.loginSuccess();
 		allPostsPg = dashBoardPg.moveToAllPostsPage();
 		allPostsPg.searchPost("ocean");
-		Assert.assertTrue(allPostsPg.hasWord("ocean"));
+		Assert.assertTrue(allPostsPg.hasKeyword("ocean"));
 	}
 }

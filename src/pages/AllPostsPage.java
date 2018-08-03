@@ -66,24 +66,32 @@ public class AllPostsPage extends BasePage {
 		filterBtn.click();
 	}
 
-	public void searchPost(String word) {
-		searchInput.sendKeys(word);
+	public void searchPost(String keyword) {
+		searchInput.sendKeys(keyword);
 		searchBtn.click();
 	}
 
-	public boolean hasWord(String word) {
+	public boolean hasKeyword(String keyword) {
 		for (int i = 0; i < postList.size(); i++) {
 			String postTitle = postList.get(i).getText().toLowerCase();
-			if (!(postTitle.contains(word.toLowerCase()))) {
+			if (!(postTitle.contains(keyword.toLowerCase()))) {
 				postList.get(i).click();
 				driver.switchTo().frame("content_ifr");
-				String body = driver.findElement(By.cssSelector("#tinymce p")).getText();
-				if (!(body.contains(word))) {
-					return false;
-				}
+				bodyHasKeyword(keyword);
 				driver.switchTo().defaultContent();
 				driver.navigate().back();
-			} 
+			}
+		}
+		return true;
+	}
+
+	public boolean bodyHasKeyword(String keyword) {
+		List<WebElement> paragraphs = driver.findElements(By.cssSelector("#tinymce p"));
+		for (int i = 0; i < paragraphs.size(); i++) {
+			String p = paragraphs.get(i).getText().toLowerCase();
+			if (!(p.contains(keyword.toLowerCase()))) {
+				return false;
+			}
 		}
 		return true;
 	}
