@@ -14,20 +14,18 @@ public class AllPostsTest extends BaseTest {
 	AddNewPostPage addNewPg;
 	AllPostsPage allPostsPg;
 
-	@Test(enabled=false)
+	@Test(enabled = false)
 	public void deleteFirstPost() {
 		loginPg = new LoginPage(driver);
-
 		dashBoardPg = loginPg.loginSuccess();
 		addNewPg = dashBoardPg.moveToAddNewPostPage();
 		addNewPg.addANewPost(title, body);
-
 		allPostsPg = addNewPg.moveToAllPostsPage();
 		allPostsPg.deleteFirstRowPost();
 		Assert.assertNotEquals(allPostsPg.getTitleFirstPost(), title);
 	}
-	
-	@Test
+
+	@Test(enabled = false)
 	public void filterByCategory() {
 		loginPg = new LoginPage(driver);
 		dashBoardPg = loginPg.loginSuccess();
@@ -37,7 +35,15 @@ public class AllPostsTest extends BaseTest {
 		allPostsPg.filterByCategory("auto");
 		allPostsPg.deleteFirstRowPost();
 		allPostsPg = allPostsPg.moveToAllPostsPage();
-		
 		Assert.assertNotEquals(allPostsPg.getTitleFirstPost(), title);
+	}
+
+	@Test
+	public void searchPost() {
+		loginPg = new LoginPage(driver);
+		dashBoardPg = loginPg.loginSuccess();
+		allPostsPg = dashBoardPg.moveToAllPostsPage();
+		allPostsPg.searchPost("ocean");
+		Assert.assertTrue(allPostsPg.hasKeyword("ocean"));
 	}
 }

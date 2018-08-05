@@ -23,7 +23,7 @@ public class BaseTest {
 		title = gen.title();
 		body = gen.body();
 		driver.get(Links.URL_LOGIN);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
 	@AfterMethod
