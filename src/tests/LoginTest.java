@@ -19,7 +19,7 @@ public class LoginTest extends BaseTest {
 
 	@Test
 	public void loginByAdmin() {
-		loginPg = new LoginPage(driver);	
+		loginPg = new LoginPage(driver);
 		dashboardPg = loginPg.loginSuccess();
 		Assert.assertTrue(dashboardPg.isDisplayed());
 	}

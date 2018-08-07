@@ -1,6 +1,8 @@
 package utilities;
 
+import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.Random;
  
 public class Generator {
@@ -34,5 +36,10 @@ public class Generator {
 					+ words[createRandomNumber()] + " "
 					+ getTime();
 		return randomString;
+	}
+	
+	public String getTimeInFormat() {
+		String timeStamp = new SimpleDateFormat("dd-MM-yyyy_HH.mm.ss").format(new Date());
+		return timeStamp;
 	}
 }
