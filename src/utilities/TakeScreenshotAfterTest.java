@@ -19,7 +19,6 @@ public class TakeScreenshotAfterTest {
 	}
 
 	public void TakeScreenshot() throws IOException {
-		gen = new Generator();
 		String fileName = gen.getTimeInFormat() + ".png";
 		String directory = "C:\\Users\\nguye\\eclipse-workspace\\demo\\img\\";
 
