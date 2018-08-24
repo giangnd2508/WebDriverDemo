@@ -19,7 +19,7 @@ public class Generator {
 		return randomString() + ", body";
 	}
  
-	public int createRandomNumber() {
+	private int createRandomNumber() {
 		Random ran = new Random();
 		int x = ran.nextInt(words.length);
 		return x;
@@ -29,7 +29,7 @@ public class Generator {
 		return (int) ZonedDateTime.now().toInstant().toEpochMilli();
 	}
  
-	public String randomString() {
+	private String randomString() {
 		String randomString = words[createRandomNumber()] + " " 
 					+ words[createRandomNumber()] + " "
 					+ words[createRandomNumber()] + " " 

@@ -71,8 +71,8 @@ public class AddNewPostPage extends BasePage {
 		newCatBtn.click();
 	}
 
-	public void selectCat(String cat) {
-		String xpath = "//*[@id='categorychecklist']//label[contains(text(), '" + cat + "')]";
+	public void selectCategory(String category) {
+		String xpath = "//*[@id='categorychecklist']//label[contains(text(), '" + category + "')]";
 		driver.findElement(By.xpath(xpath)).click();
 	}
 
@@ -82,7 +82,7 @@ public class AddNewPostPage extends BasePage {
 		bodyID.sendKeys(body);
 		driver.switchTo().defaultContent();
 		wait.until(ExpectedConditions.visibilityOf(permalink));
-		selectCat(cat);
+		selectCategory(cat);
 		publishBtn.click();
 	}
 

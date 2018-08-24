@@ -85,7 +85,7 @@ public class AllPostsPage extends BasePage {
 		return true;
 	}
 
-	public boolean bodyHasKeyword(String keyword) {
+	private boolean bodyHasKeyword(String keyword) {
 		List<WebElement> paragraphs = driver.findElements(By.cssSelector("#tinymce p"));
 		for (int i = 0; i < paragraphs.size(); i++) {
 			String p = paragraphs.get(i).getText().toLowerCase();
