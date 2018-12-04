@@ -32,7 +32,7 @@ public class BaseTest {
 
 	@AfterMethod
 	public void tearDown() throws IOException {
-		screenshot.TakeScreenshot();		
+		screenshot.TakeScreenshot();
 		driver.quit();
 	}
 }
