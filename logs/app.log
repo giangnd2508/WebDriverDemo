@@ -1,0 +1,6 @@
+22:38:47.905 INFO  pages.LoginPage -Login with username: abc and password123
+22:38:52.391 INFO  pages.LoginPage -Login with username:   and password123
+22:38:57.027 INFO  pages.LoginPage -Login with username: abc and password 
+22:40:26.897 INFO  pages.LoginPage -Login with username: 'abc' and password: '123'
+22:40:31.362 INFO  pages.LoginPage -Login with username: ' ' and password: '123'
+22:40:35.874 INFO  pages.LoginPage -Login with username: 'abc' and password: ' '
