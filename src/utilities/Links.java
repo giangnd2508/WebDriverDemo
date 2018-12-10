@@ -11,4 +11,5 @@ public class Links {
 	public static final String URL_TRASH = DOMAIN + "/wp-admin/edit.php?post_status=trash&post_type=post";
 	
 	public static final String PATH_TO_EXCEL = System.getProperty("user.dir") + File.separator + "data"	+ File.separator + "data.xlsx";
+	public static final String PATH_TO_IMG = System.getProperty("user.dir") + File.separator + "img" + File.separator;
 }

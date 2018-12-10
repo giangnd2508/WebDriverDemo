@@ -1,5 +1,7 @@
 package tests;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,6 +14,8 @@ import utilities.ReadFile;
 public class LoginTest extends BaseTest {
 	LoginPage loginPg;
 	DashboardPage dashboardPg;
+	
+	private static final Logger log = LogManager.getLogger(LoginTest.class.getName());
 
 //	@Test
 	public void loginWithBlankField() {
@@ -29,9 +33,10 @@ public class LoginTest extends BaseTest {
 	
 	@Test(dataProvider="loginData")
 	public void loginFail(String userName, String password) {
+		log.info("**********Test_login_fail_with_data_from_excel***********");
 		loginPg = new LoginPage(driver);
 		loginPg.login(userName, password);
-		Assert.assertTrue(loginPg.isDisplayed());
+		Assert.assertFalse(loginPg.isDisplayed());
 	}
 	
 	

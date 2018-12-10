@@ -8,19 +8,19 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-public class TakeScreenshotAfterTest {
+public class Screenshot {
 
 	Generator gen;
 	WebDriver driver;
 
-	public TakeScreenshotAfterTest(Generator gen, WebDriver driver) {
+	public Screenshot(Generator gen, WebDriver driver) {
 		this.gen = gen;
 		this.driver = driver;
 	}
 
-	public void TakeScreenshot() throws IOException {
-		String fileName = gen.getTimeInFormat() + ".png";
-		String directory = "C:\\Users\\nguye\\eclipse-workspace\\demo\\img\\";
+	public void takeScreenshot(String filename) throws IOException {
+		String fileName = filename + gen.getTimeInFormat() + ".png";
+		String directory = Links.PATH_TO_IMG;
 
 		File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(sourceFile, new File(directory + fileName));

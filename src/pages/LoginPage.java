@@ -34,7 +34,6 @@ public class LoginPage {
 		user_pass.sendKeys(password);
 		submitBtn.click();
 		log.info("Login with username: '"+ userName + "' and password: '" + password + "'");
-		
 	}
 	
 	public DashboardPage loginSuccess() {
